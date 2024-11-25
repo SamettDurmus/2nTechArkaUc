@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoş Geldiniz</title>
+</head>
+<body>
+    <h1>Hoş Geldiniz!</h1>
+    <p>İşlemleriniz burada gösterilecektir.</p>
+
+    <!-- Eğer kullanıcı yönetici ise -->
+    {% if is_yonetici %}
+        <p>Yönetici olarak giriş yaptınız.</p>
+        <a href="{% url 'yonetici_paneli' %}">Yönetici Paneli</a>
+        <br>
+        <a href="{% url 'yonetici/izinler' %}">İzin Yönetimi</a> <!-- Yönetici için izin yönetimi -->
+
+    {% endif %}
+
+    <!-- Eğer kullanıcı personel ise -->
+    {% if is_personel %}
+        <p>Personel olarak giriş yaptınız.</p>
+        <a href="{% url 'personel/izin_talep' %}">İzin Talep Et</a> <!-- Personel için izin talep etme -->
+        <br>
+        <a href="{% url 'giris-cikis' %}">Giriş-Çıkış Kaydı</a> <!-- Personel için giriş çıkış -->
+        <br>
+        <a href="{% url 'personel_izinler' %}">İzin Durumum</a> <!-- Personel için izin durumu gösterme -->
+    {% endif %}
+
+    <!-- Çıkış Yap Linki -->
+    <form method="post" action="{% url 'personel_logout' %}">
+        {% csrf_token %}
+        <button type="submit">Çıkış Yap</button>
+    </form>
+</body>
+</html>

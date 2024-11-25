@@ -1,0 +1,20 @@
+<h1>İzin Yönetimi</h1>
+<table>
+    <tr>
+        <th>Personel</th>
+        <th>Başlangıç Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>İşlem</th>
+    </tr>
+    {% for izin in izin_talepleri %}
+    <tr>
+        <td>{{ izin.personel.user.username }}</td>
+        <td>{{ izin.baslangic_tarihi }}</td>
+        <td>{{ izin.bitis_tarihi }}</td>
+        <td>
+            <a href="{% url 'izin_onayla' izin.id %}">Onayla</a>
+            <a href="{% url 'izin_reddet' izin.id %}">Reddet</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

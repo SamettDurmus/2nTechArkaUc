@@ -1,0 +1,19 @@
+<h1>Giriş-Çıkış Kayıtlarınız</h1>
+
+<table border="1">
+    <tr>
+        <th>Giriş Saati</th>
+        <th>Çıkış Saati</th>
+        <th>Çalışma Süresi (saat)</th>
+        <th>Geç Kalma (dk)</th>
+    </tr>
+    {% for kayit in giris_cikislar %}
+    <tr>
+        <td>{{ kayit.giris_saati }}</td>
+        <td>{{ kayit.cikis_saati|default:"Hâlâ çalışıyor" }}</td>
+        <td>{{ kayit.calisma_suresi|default:"-" }}</td>
+        <td>{{ kayit.gecikme_suresi|default:"-" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+

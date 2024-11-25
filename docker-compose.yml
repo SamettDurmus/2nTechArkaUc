@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgress2:password@db:5432/postgress2
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgress2
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgress2
+    ports:
+      - "5432:5432"

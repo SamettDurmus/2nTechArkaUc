@@ -1,0 +1,27 @@
+<h1>Yönetici Paneli</h1>
+
+<h2>Uyarılar</h2>
+<ul>
+    {% for uyar in uyarilar %}
+        <li>{{ uyar }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Personel Listesi</h2>
+<table>
+    <tr>
+        <th>Personel</th>
+        <th>Geç Kalma (dk)</th>
+        <th>Çalışma Süresi (saat)</th>
+        <th>Kalan İzin</th>
+    </tr>
+    {% for bilgi in personel_bilgileri %}
+    <tr>
+        <td>{{ bilgi.personel.user.username }}</td>
+        <td>{{ bilgi.gecikme|default:"Geç kalmadı" }}</td>
+        <td>{{ bilgi.calisma_suresi }}</td>
+        <td>{{ bilgi.personel.kalan_izin }}</td>
+    </tr>
+    {% endfor %}
+</table>
+

@@ -1,0 +1,24 @@
+<h1>İzin Talepleriniz</h1>
+<table>
+    <tr>
+        <th>Başlangıç Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>Durum</th>
+    </tr>
+    {% for izin in izinler %}
+    <tr>
+        <td>{{ izin.baslangic_tarihi }}</td>
+        <td>{{ izin.bitis_tarihi }}</td>
+        <td>
+            {% if izin.onaylandi %}
+                Onaylandı
+            {% elif izin.reddedildi %}
+                Reddedildi
+            {% else %}
+                Bekliyor
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'izin_talep_et' %}">Yeni İzin Talebi</a>

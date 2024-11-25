@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin İzin Atama</title>
+</head>
+<body>
+    <h2>Admin İzin Atama</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Personel Seçim Alanı -->
+        <div>
+            <label for="personel">Personel:</label>
+            {{ form.personel }}
+        </div>
+
+        <!-- Başlangıç Tarihi Seçim Alanı -->
+        <div>
+            <label for="baslangic_tarihi">Başlangıç Tarihi:</label>
+            <input type="date" name="baslangic_tarihi" id="baslangic_tarihi" required>
+        </div>
+
+        <!-- Bitiş Tarihi Seçim Alanı -->
+        <div>
+            <label for="bitis_tarihi">Bitiş Tarihi:</label>
+            <input type="date" name="bitis_tarihi" id="bitis_tarihi" required>
+        </div>
+
+        <!-- Submit Butonu -->
+        <button type="submit">İzin At</button>
+    </form>
+</body>
+</html>

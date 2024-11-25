@@ -1,0 +1,9 @@
+<h1>İzin Talep Et</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>Başlangıç Tarihi:</label>
+    <input type="date" name="baslangic_tarihi" required><br>
+    <label>Bitiş Tarihi:</label>
+    <input type="date" name="bitis_tarihi" required><br>
+    <button type="submit">Talep Gönder</button>
+</form>
